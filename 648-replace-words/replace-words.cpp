@@ -21,9 +21,9 @@ public:
                     {
                         i++;
                     }
-                    ans+=x;
+                    // ans+=x;
                     
-                    x="";
+                    // x="";
                     continue;
                 }
             }
