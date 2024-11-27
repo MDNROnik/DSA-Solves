@@ -19,10 +19,7 @@ public:
         //     one.push_back(one[1]);
         // }
         one.push_back(n+1);
-        for(int i=0;i<one.size();i++){
-            cout<<one[i]<<" ";
-        }
-        cout<<endl;
+        
         if(goal==0){
             if(zero.size()==n){
                 return (n*(n+1))/2;
@@ -42,12 +39,11 @@ public:
             if(one.size()-2>=goal){
                 //cout<<11<<endl;
                 int l=1,r=0;
-                cout<<one.size()<<endl;
+                
                 while(r<one.size()-2){
                     r=l+goal;
                     r--;
-                    cout<<l<<" "<<r<<endl;
-                    cout<<one[l]<<" "<<one[r]<<endl;
+                    
                     if(r>=one.size()){
                         //cout<<r<<" "<<one.size()<<endl;
                         break;
@@ -66,7 +62,7 @@ public:
                     //cout<<left<<" "<<right<<endl<<endl;
                     // int count=0;
                     // if(left==0 || right==0){count++;}
-                    cout<<left<<" "<<right<<endl<<endl;
+                    
                     // left+=right;
                     // //cout<<left<<endl;
                     // left= (left*(left+1))/2;
