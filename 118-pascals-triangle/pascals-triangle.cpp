@@ -1,37 +1,23 @@
 class Solution {
 public:
     vector<vector<int>> generate(int numRows) {
-        vector<vector<int>>ans;
-        vector<int>a;a.push_back(1);
-        ans.push_back(a);
-        numRows-=1;
-        while(numRows--){
-            int i=0,j=ans[ans.size()-1].size();
-            vector<int>v=ans[ans.size()-1];
-            vector<int>newa;
-            for(int k=0;k<=j;k++){
-                int up=0,left=0;
-                if(k>=i && k<=j-1){
-                    up+=v[k];
-                }
-                if(k-1>=i && k-1<=j-1){
-                    left+=v[k-1];
-                }
-                newa.push_back(up+left);
+        vector<vector<int>>ans;int k=0;
+        for(int i=0;i<numRows;i++){
+            vector<int>v((i+1),0);
+            if(i==0){
+                v[0]=1;
+                ans.push_back(v);
             }
-
-
-
-
-
-
-
-
-
-
-
-
-            ans.push_back(newa);
+            else{
+                
+                vector<int>vec=ans[k];
+                for(int j=0;j<vec.size();j++){
+                    v[j]+=vec[j];
+                    v[j+1]+=vec[j];
+                }
+                ans.push_back(v);
+                k++;
+            }
         }
         return ans;
     }
