@@ -4,8 +4,8 @@ public:
         vector<vector<int>>ans;
         vector<int>v,vec;
         sort(intervals.begin(),intervals.end());
-
-        for(int i=0;i<intervals.size();i++){
+        int n=intervals.size();
+        for(int i=0;i<n;i++){
             v.push_back(intervals[i][0]);
             v.push_back(intervals[i][1]);
         }
@@ -14,8 +14,9 @@ public:
 
         vec.push_back(v[0]);
         int cur=v[1];
-        for(int i=2;i<v.size();){
-            cout<<cur<<" "<<v[i+1]<<endl;
+        n=v.size();
+        for(int i=2;i<n;){
+            //cout<<cur<<" "<<v[i+1]<<endl;
             if(v[i]<=cur && v[i+1]>=cur){
                 cur=v[i+1];
                 i=i+2;
@@ -36,7 +37,8 @@ public:
 
 
         // cout<<vec.size()<<endl;
-        for(int i=0;i<vec.size();i=i+2){
+        n=vec.size();
+        for(int i=0;i<n;i=i+2){
             if(i+1>=vec.size()){break;}
             vector<int>a;
             a.push_back(vec[i]);
