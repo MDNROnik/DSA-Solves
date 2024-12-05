@@ -4,7 +4,7 @@ public:
         vector<int>ans;
         int l=0,r=v.size()-1;
         while(l<r){
-            cout<<l<<" "<<r<<endl;
+           
             
             if(v[r]+v[l]==target){
                 ans.push_back(l+1);
