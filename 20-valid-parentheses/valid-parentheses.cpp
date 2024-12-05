@@ -1,39 +1,31 @@
 class Solution {
 public:
-    bool isValid(string expression) {
-            if(expression.size()%2!=0){
-            return 0;
-        }
-        stack<char>s;
-        for(int i=0;i<expression.size();i++){
-            if(expression[i]=='('){
-                s.push(expression[i]);
-            }
-            else if(expression[i]=='{'){
-                s.push(expression[i]);
-            }
-            else if(expression[i]=='['){
-                s.push(expression[i]);
-            }
-            else if(expression[i]==')' && s.size()>0 && s.top()=='('){
-                s.pop();
-            }
-            else if(expression[i]=='}' && s.size()>0 && s.top()=='{'){
-                s.pop();
-            }
-            else if(expression[i]==']' && s.size()>0 && s.top()=='['){
-                s.pop();
+    bool isValid(string s) {
+        stack<char>st;
+        int n=s.size();
+        for(int i=0;i<n;i++){
+            if(s[i]=='(' || s[i]=='{' || s[i]=='['){
+                st.push(s[i]);
             }
             else{
-                s.push(expression[i]);
+                cout<<s[i]<<endl;
+                if(st.size()==0){return false;}
+                if(s[i]==')' && st.top()=='('){
+                    cout<<111<<endl;
+                    st.pop();
+                }
+                else if(s[i]=='}' && st.top()=='{'){
+                    cout<<222<<endl;
+                    st.pop();
+                }
+                else if(s[i]==']' && st.top()=='['){
+                    cout<<333<<endl;
+                    st.pop();
+                }
+                else {return false;}
             }
         }
-        //cout<<s.size()<<endl;
-        if(s.size()==0){
-            return 1;
-        }
-        else{
-            return 0;
-        }
+        if(st.size()>0){return false;}
+        return true;
     }
 };
