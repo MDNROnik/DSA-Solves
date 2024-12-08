@@ -1,20 +1,21 @@
 class Solution {
 public:
-    void solve(int n,vector<string>&ans,string s){
-        if(n==0){
-            bool a = isValid(s);
-            if(a==1){
-                ans.push_back(s);
-            }
-            return ;
+    void dfs(int l, int r, string& path, vector<string>& ans) {
+        if (l == 0 && r == 0) {
+            ans.push_back(path);
+            return;
         }
-        s.push_back('(');
-        solve(n-1,ans,s);
-        s.pop_back();
-        s.push_back(')');
-        solve(n-1,ans,s);
-        s.pop_back();
-        return ;
+
+        if (l > 0) {
+            path.push_back('(');
+            dfs(l - 1, r, path, ans);
+            path.pop_back();
+        }
+        if (l < r) {
+            path.push_back(')');
+            dfs(l, r - 1, path, ans);
+            path.pop_back();
+        }
     }
     bool isValid(string s) {
         stack<char>st;
@@ -46,9 +47,8 @@ public:
     }
     vector<string> generateParenthesis(int n) {
         vector<string>ans;
-        n*=2;
         string s;
-        solve(n,ans,s);
+        dfs(n, n, s, ans);
         return ans;
     }
 };
