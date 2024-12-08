@@ -1,31 +1,25 @@
-#include <stack>
-using namespace std;
 class MinStack {
-private:
-    stack<int>st;
-    stack<int>mi;
-
 public:
-    MinStack() {}
+    stack<pair<int,int>> s;
+    MinStack() {
+        // s.clear();
+    }
+    
     void push(int val) {
-        st.push(val);
-        if(mi.size()==0 || mi.top()>=val){
-            mi.push(val);
-        }
-
+        if(s.empty()) s.push({val,val});
+        else s.push({val,min(val,s.top().second)});
     }
     
     void pop() {
-        if( st.top() == mi.top() ){mi.pop();}
-        st.pop();
+        s.pop();
     }
     
     int top() {
-        return st.top();
+        return s.top().first;
     }
     
     int getMin() {
-        return mi.top();
+        return s.top().second;
     }
 };
 
