@@ -1,31 +1,29 @@
+#define ll long long
 class Solution {
 public:
     int minEatingSpeed(vector<int>& piles, int h) {
-        sort(piles.begin(),piles.end());
-        int low=1;
-        int high=piles[piles.size()-1];
-        //ceil((double)(v[i]) / (double)(hourly));
-        
-        int ans=0;
-        while(low<=high){
-            int mid=low+high;
-            mid/=2;
-            cout<<low<<" "<<mid<<" "<<high<<endl;
-            int now=0;
-            for(int i=0;i<piles.size();i++){
-                now+=ceil((double)(piles[i]) / (double)(mid));
-                if(now>h){break;}
+        ll ans = 0;
+        ll l=1,r=1000000000;
+        int n=piles.size();
+        while(l<=r){
+            ll mid = l+(r-l)/2;
+            int count=0;
+            for(int i=0;i<n;i++){
+                int temp = piles[i]/mid;
+                if( (piles[i] % mid) != 0 ){
+                    temp++;
+                }
+                count+=temp;
+                if(count>h){break;}
             }
-            //cout<<now<<endl;
-            if(now<=h){
-                ans=mid;
-                high=mid-1;
+            if(count>h){
+                l=mid+1;
             }
             else{
-                low=mid+1;
+                r=mid-1;
+                ans=mid;
             }
         }
-
         return ans;
     }
 };
