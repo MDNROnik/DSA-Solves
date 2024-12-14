@@ -1,13 +1,12 @@
 #include <bits/stdc++.h>
 
 class TimeMap {
-private:
-    unordered_map<string, vector<pair<int, string>>>mp;
 public:
+    unordered_map<string, vector<pair<int, string>>>mp;
     TimeMap() { }
     
     void set(string key, string value, int timestamp) {
-        mp[key].emplace_back(timestamp,value);
+        mp[key].push_back({timestamp,value});
     }
     
     string get(string key, int timestamp) {
