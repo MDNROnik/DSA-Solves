@@ -11,14 +11,24 @@
  */
 class Solution {
 public:
+    TreeNode* fun(TreeNode* root){
+        if(root==NULL){
+            return root;
+        }
+        TreeNode* l = fun(root->left);
+        TreeNode* r = fun(root->right);
+        root->left=r;
+        root->right=l;
+        return root;
+    }
     TreeNode* invertTree(TreeNode* root) {
         if(root==NULL){
-            return NULL;
+            return root;
         }
-        TreeNode* left = invertTree(root->left);
-        TreeNode* right = invertTree(root->right);
-        root->left=right;
-        root->right=left;
+        TreeNode* l = fun(root->left);
+        TreeNode* r = fun(root->right);
+        root->left=r;
+        root->right=l;
         return root;
     }
 };
