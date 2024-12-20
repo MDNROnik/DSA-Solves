@@ -11,14 +11,18 @@
  */
 class Solution {
 public:
-    bool isSameTree(TreeNode* node1, TreeNode* node2) {
-        if (node1 == nullptr && node2 == nullptr)
-            return true;
-        else if (node1 == nullptr || node2 == nullptr)
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+
+        if(p==NULL && q==NULL){ cout<<111<<endl; return true;}
+        else if(p==NULL && q!=NULL){cout<<222<<endl;return false;}
+        else if(p!=NULL && q==NULL){cout<<333<<endl;return false;}
+        else if(p->val==q->val){
+            cout<<p->val<<" "<<q->val<<endl;
+            return ( isSameTree(p->left,q->left) && isSameTree(p->right,q->right) ) ;
+        }
+        else{
+            cout<<p->val<<" "<<q->val<<endl;
             return false;
-        else if((node1 -> val != node2 -> val))
-            return false;
-        return isSameTree(node1->left , node2->left) && 
-               isSameTree(node1->right , node2->right);
+        }
     }
 };
