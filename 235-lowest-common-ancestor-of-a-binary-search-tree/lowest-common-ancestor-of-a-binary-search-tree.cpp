@@ -10,44 +10,35 @@
 
 class Solution {
 public:
-    void setparent(TreeNode* root, map<long long,long long> &parent, int value){
-        if(root==NULL){return;}
-        parent[root->val]=value;
-        setparent(root->left,parent,root->val);
-        setparent(root->right,parent,root->val);
-        return;
+    int fun(TreeNode* root, TreeNode* p, TreeNode* q, int &ans){
+        if(root==NULL){
+            return 0;
+        }
+
+        //cout<<root->val<<endl;
+
+        if(ans!=-1000000000){return 0;}
+        int count = 0;
+        if(root->val==p->val || root->val==q->val){
+            count++;
+        }
+        int l = fun(root->left,p,q,ans);
+        int r = fun(root->right,p,q,ans);
+
+        cout<<root->val<<" ROOT "<<endl;
+        cout<< count<<" "<<l<<" "<<r<<endl<<endl;;
+
+        if(count+l+r == 2){
+            ans = root->val;
+            
+            return 0;
+        }
+        return count+l+r;
     }
     TreeNode* lowestCommonAncestor(TreeNode* root, TreeNode* p, TreeNode* q) {
-        map<long long,long long>parent,parents;
-        long long grand = 1000000005;
-        parent[root->val] = grand;
-        setparent(root->left,parent,root->val);
-        setparent(root->right,parent,root->val);
-        // for(auto a=parent.begin();a!=parent.end();a++){
-        //     cout<<a->first<<" "<<a->second<<endl;
-        // }
-        // TreeNode* n = new TreeNode(6);
-
-        while(p->val != grand){
-            parents[p->val]++;
-            p->val = parent[p->val];
-        }
-        // for(auto a=parents.begin();a!=parents.end();a++){
-        //     cout<<a->first<<" "<<a->second<<endl;
-        // }cout<<endl;
-        int ans = INT_MAX;
-        while(q->val != grand){
-            parents[q->val]++;
-            if(parents[q->val]>=2){
-                ans = min(ans,q->val);break;
-            }
-            q->val = parent[q->val];
-        }
-        // for(auto a=parents.begin();a!=parents.end();a++){
-        //     cout<<a->first<<" "<<a->second<<endl;
-        // }
-        //cout<<root->val<<endl;
-        root->val = ans;
+        int ans = -1000000000;
+        fun(root,p,q,ans);
+        root->val=ans;
         return root;
     }
 };
