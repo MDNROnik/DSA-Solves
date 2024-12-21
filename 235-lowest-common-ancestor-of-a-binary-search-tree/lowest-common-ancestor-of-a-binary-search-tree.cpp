@@ -23,7 +23,9 @@ public:
             count++;
         }
         int l = fun(root->left,p,q,ans);
+        if(ans!=-1000000000){return 0;}
         int r = fun(root->right,p,q,ans);
+        if(ans!=-1000000000){return 0;}
 
         cout<<root->val<<" ROOT "<<endl;
         cout<< count<<" "<<l<<" "<<r<<endl<<endl;;
