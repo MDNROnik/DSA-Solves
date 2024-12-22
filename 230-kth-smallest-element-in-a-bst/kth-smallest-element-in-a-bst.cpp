@@ -11,25 +11,23 @@
  */
 class Solution {
 public:
-    void inOrderTrav(TreeNode * curr, int &k, int &ans) {
-        if (curr == NULL)
-            return;
-        if(k<0){
-            return;
+    int kthSmallest2(TreeNode* root, vector<int> &v) {
+        if(root==NULL){
+            return 0;
         }
-
-        inOrderTrav(curr -> left, k,ans);
-        k-=1;
-        //cout<<curr->val<<" "<<k<<endl;
-        if(k==0){
-            ans=curr->val;return;
-        }
-        inOrderTrav(curr -> right, k,ans);
-
+        v.push_back(root->val);
+        kthSmallest2(root->left,v);
+        kthSmallest2(root->right,v);
+        //sort(v.begin(),v.end());
+        return 0;
     }
     int kthSmallest(TreeNode* root, int k) {
-        int ans=-1;
-        inOrderTrav(root, k,ans);
-        return ans;
+        vector<int>v;
+        kthSmallest2(root,v);
+        sort(v.begin(),v.end());
+        // for(int i=0;i<v.size();i++){
+        //     cout<<v[i]<<" ";
+        // }
+        return v[k-1];
     }
 };
