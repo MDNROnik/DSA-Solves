@@ -22,10 +22,11 @@ public:
             int i=0,n=q.size();
             vector<int>v;
             for(int i=0;i<n;i++){
-                v.push_back(q.front()->val);
+                TreeNode* temp = q.front();
+                v.push_back(temp->val);
                 
-                if(q.front()->left != NULL){q.push(q.front()->left);}
-                if(q.front()->right != NULL){q.push(q.front()->right);}
+                if(temp->left != NULL){q.push(temp->left);}
+                if(temp->right != NULL){q.push(temp->right);}
                 q.pop();
             }
             ans.push_back(v);
