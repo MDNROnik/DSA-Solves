@@ -11,6 +11,11 @@
  */
 class Solution {
 public:
+    Solution() {
+        std::ios_base::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        std::cout.tie(nullptr);
+    }
     void fun(TreeNode* root, int &count ,  int maxi){
         if(root==NULL){
             return ;
