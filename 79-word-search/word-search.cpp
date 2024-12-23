@@ -1,5 +1,10 @@
 class Solution {
 public:
+    Solution() {
+        std::ios_base::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        std::cout.tie(nullptr);
+    }
     bool fun(vector<vector<char>>& board, string &word, int index, int i, int j, vector<vector<int>> &visited, int n, int m){
 
         visited[i][j]=1;
