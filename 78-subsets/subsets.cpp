@@ -5,9 +5,11 @@ public:
             ans.push_back(now);
             return ;
         }
-        fun(ans, nums, index+1, siz, now);
         now.push_back(nums[index]);
         fun(ans, nums, index+1, siz, now);
+        now.pop_back();
+        fun(ans, nums, index+1, siz, now);
+        
         return ;
     }
     vector<vector<int>> subsets(vector<int>& nums) {
