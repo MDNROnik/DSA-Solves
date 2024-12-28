@@ -3,21 +3,25 @@ public:
     bool check(vector<string> &ans, int siz, int row, int col){
         //col
         if( row>=siz ){return false;}
-        int cnt = 0;
+        int cnt = 0,cnt2=0;;
         for(int i=0;i<siz;i++){
             if(ans[row][i]=='Q'){cnt++;}
             if(cnt==2){
                 return false;
             }
-        }
-        //row
-        cnt=0;
-        for(int i=0;i<siz;i++){
-            if(ans[i][col]=='Q'){cnt++;}
-            if(cnt==2){
+            if(ans[i][col]=='Q'){cnt2++;}
+            if(cnt2==2){
                 return false;
             }
         }
+        //row
+        cnt=0;
+        // for(int i=0;i<siz;i++){
+        //     if(ans[i][col]=='Q'){cnt++;}
+        //     if(cnt==2){
+        //         return false;
+        //     }
+        // }
 
         //dia
         cnt=0;
