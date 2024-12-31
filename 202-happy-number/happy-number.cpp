@@ -1,26 +1,24 @@
+#define ll long long
 class Solution {
 public:
-    bool isHappy(int n) {
-        map<int,bool>mp;
-        while(1){
-            int m=0;
-            //cout<<n<<endl;
+    bool isHappy(int n2) {
+        ll n=n2,count=0;;
+        while(n>1){
+            cout<<"start "<<n<<endl;
+            ll total=0;
             while(n>0){
-                int temp = n%10;
-                temp=pow(temp,2);
-                m+=temp;
+                cout<<"IN "<<n<<endl;
+                ll temp = n%10;
+                temp*=temp;
+                total+=temp;
                 n/=10;
             }
-            n=m;
-            if(m==1){
-                return true;
-            }
-            if(mp[m]==false ){
-                mp[m]=true;
-            }
-            else{
-                //cout<<m<<endl;
+            n=total;
+            if(n>1 && n<10 && count==1){
                 return false;
+            }
+            else if(n>2 && n<10){
+                count++;
             }
         }
         return true;
