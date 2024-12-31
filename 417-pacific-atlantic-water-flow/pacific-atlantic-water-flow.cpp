@@ -110,10 +110,10 @@ public:
                 }
 
                 if(j-1>=0 && heights[i][j-1]<=heights[i][j]){
-                    auto a = mp[{i,j-1}].second;
-                    auto b = mp[{i,j}].second;
-                    b[0]+=a[0]; b[1]+=a[1]; b[2]+=a[2]; b[3]+=a[3]; 
-                    mp[{i,j}].second=b;
+                    mp[{i,j}].second[0] = max( mp[{i,j}].second[0], mp[{i,j-1}].second[0]   );
+                    mp[{i,j}].second[1] = max( mp[{i,j}].second[1], mp[{i,j-1}].second[1]   );
+                    mp[{i,j}].second[2] = max( mp[{i,j}].second[2], mp[{i,j-1}].second[2]   );
+                    mp[{i,j}].second[3] = max( mp[{i,j}].second[3], mp[{i,j-1}].second[3]   );
                 }
                 if(j+1<m && heights[i][j+1]<=heights[i][j]){
                     mp[{i,j}].second[0] = max( mp[{i,j}].second[0], mp[{i,j+1}].second[0]   );
@@ -139,10 +139,10 @@ public:
                 }
 
                 if(j-1>=0 && heights[i][j-1]<=heights[i][j]){
-                    auto a = mp[{i,j-1}].second;
-                    auto b = mp[{i,j}].second;
-                    b[0]+=a[0]; b[1]+=a[1]; b[2]+=a[2]; b[3]+=a[3]; 
-                    mp[{i,j}].second=b;
+                    mp[{i,j}].second[0] = max( mp[{i,j}].second[0], mp[{i,j-1}].second[0]   );
+                    mp[{i,j}].second[1] = max( mp[{i,j}].second[1], mp[{i,j-1}].second[1]   );
+                    mp[{i,j}].second[2] = max( mp[{i,j}].second[2], mp[{i,j-1}].second[2]   );
+                    mp[{i,j}].second[3] = max( mp[{i,j}].second[3], mp[{i,j-1}].second[3]   );
                 }
                 if(j+1<m && heights[i][j+1]<=heights[i][j]){
                     mp[{i,j}].second[0] = max( mp[{i,j}].second[0], mp[{i,j+1}].second[0]   );
