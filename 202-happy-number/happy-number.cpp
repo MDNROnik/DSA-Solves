@@ -9,7 +9,7 @@ public:
             while(n>0){
                 cout<<"IN "<<n<<endl;
                 ll temp = n%10;
-                temp*=temp;
+                temp=pow(temp,2);
                 total+=temp;
                 n/=10;
             }
