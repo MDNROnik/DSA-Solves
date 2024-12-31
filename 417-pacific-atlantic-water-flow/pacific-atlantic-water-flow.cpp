@@ -193,7 +193,7 @@ public:
         int cnt=0;
         vector<vector<int>>ans;
         for(auto a=mp.begin();a!=mp.end();a++){
-            cout<<a->first.first<<" "<<a->first.second<<endl;
+            //cout<<a->first.first<<" "<<a->first.second<<endl;
             auto b = a->second.second;
             // cnt++;ans.push_back({a->first.first, a->first.second});
             
@@ -203,10 +203,10 @@ public:
                 }
             }
 
-            cout<<b[0]<<" "<<b[1]<<" "<<b[2]<<" "<<b[3]<<endl<<endl;
+           // cout<<b[0]<<" "<<b[1]<<" "<<b[2]<<" "<<b[3]<<endl<<endl;
 
         }
-        cout<<cnt<<endl;
+        //cout<<cnt<<endl;
 
         return ans;
     }
