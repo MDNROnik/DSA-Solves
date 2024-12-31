@@ -126,10 +126,10 @@ public:
         for(int i=0;i<n;i++){
             for(int j=0;j<m;j++){
                 if(i-1>=0 && heights[i-1][j]<=heights[i][j]){
-                    auto a = mp[{i-1,j}].second;
-                    auto b = mp[{i,j}].second;
-                    b[0]+=a[0]; b[1]+=a[1]; b[2]+=a[2]; b[3]+=a[3]; 
-                    mp[{i,j}].second=b;
+                    mp[{i,j}].second[0] = max( mp[{i,j}].second[0], mp[{i-1,j}].second[0]   );
+                    mp[{i,j}].second[1] = max( mp[{i,j}].second[1], mp[{i-1,j}].second[1]   );
+                    mp[{i,j}].second[2] = max( mp[{i,j}].second[2], mp[{i-1,j}].second[2]   );
+                    mp[{i,j}].second[3] = max( mp[{i,j}].second[3], mp[{i-1,j}].second[3]   );
                 }
                 if(i+1<n && heights[i+1][j]<=heights[i][j]){
                     auto a = mp[{i+1,j}].second;
