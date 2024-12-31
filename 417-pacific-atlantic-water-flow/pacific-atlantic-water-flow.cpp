@@ -15,11 +15,7 @@ public:
             mp[{i,j}].second[3]=1;
         }
         else if(j+1<m && heights[i][j+1]<=heights[i][j]){
-           
             fun(heights, mp, n, m, i, j+1);
-            auto b = mp[{i,j+1}].second;
-            auto a =  mp[{i,j}].second;
-
             mp[{i,j}].second[0] = max( mp[{i,j}].second[0], mp[{i,j+1}].second[0]   );
             mp[{i,j}].second[1] = max( mp[{i,j}].second[1], mp[{i,j+1}].second[1]   );
             mp[{i,j}].second[2] = max( mp[{i,j}].second[2], mp[{i,j+1}].second[2]   );
@@ -40,13 +36,10 @@ public:
         else if(i-1>=0 && heights[i-1][j]<=heights[i][j]){
 
             fun(heights, mp, n, m, i-1, j);
-            auto b = mp[{i-1,j}].second;
-            auto a =  mp[{i,j}].second;
-            a[0] = max(a[0],b[0]);
-            a[1] = max(a[1],b[1]);
-            a[2] = max(a[2],b[2]);
-            a[3] = max(a[3],b[3]);
-            mp[{i,j}].second=a;
+            mp[{i,j}].second[0] = max( mp[{i,j}].second[0], mp[{i-1,j}].second[0]   );
+            mp[{i,j}].second[1] = max( mp[{i,j}].second[1], mp[{i-1,j}].second[1]   );
+            mp[{i,j}].second[2] = max( mp[{i,j}].second[2], mp[{i-1,j}].second[2]   );
+            mp[{i,j}].second[3] = max( mp[{i,j}].second[3], mp[{i-1,j}].second[3]   );
         }
 
         //Down
