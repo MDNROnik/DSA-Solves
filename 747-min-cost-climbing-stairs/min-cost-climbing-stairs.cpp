@@ -16,8 +16,9 @@ public:
     }
     int minCostClimbingStairs(vector<int>& cost) {
         //map<int, int>mp;
-        vector<int> mp(1000, -1);
         int n = cost.size();
+        vector<int> mp(n, -1);
+
         int zero = fun(mp, 0, n, cost);
         int one = mp[1];
         cout<<zero<<" "<<one<<endl;
