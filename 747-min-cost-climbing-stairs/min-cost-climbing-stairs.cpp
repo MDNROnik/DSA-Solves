@@ -1,31 +1,26 @@
 class Solution {
 public:
-    int solve1(int n,vector<int>& cost,vector<int>& dp){
-        if(n==0 || n==1){
-            dp[n]=cost[n];
-            return cost[n];
+    int fun(vector<int> &mp, int now, int n, vector<int> &cost){
+        if(now==n){
+            return 0;
         }
-        if(dp[n]!=-1){
-            return dp[n];
+        if(now>n){
+            return 1000;
         }
-        return dp[n]=(cost[n]+min(solve1(n-1,cost,dp),solve1(n-2,cost,dp)));
+        if(mp[now]>-1){
+            return mp[now];
+        }
+        int onestep = cost[now] + fun(mp, now+1, n, cost);
+        int twostep = cost[now] + fun(mp, now+2, n, cost);
+        return mp[now] = min(onestep, twostep);
     }
-    int solve2(int n,vector<int>& cost){
-        vector<int>dp(n+1);
-        dp[0]=cost[0];
-        dp[1]=cost[1];
-        for(int i=2;i<n;i++){
-            dp[i]=cost[i]+min(dp[i-1],dp[i-2]);
-        }
-        return min(dp[n-1],dp[n-2]);
-    }
-    
-    
-    
     int minCostClimbingStairs(vector<int>& cost) {
-        int n=cost.size();
-        vector<int>dp(n+1,-1);
-        //return min(solve1(n-1,cost,dp),solve1(n-2,cost,dp));
-        return solve2(n,cost);
+        //map<int, int>mp;
+        vector<int> mp(1000, -1);
+        int n = cost.size();
+        int zero = fun(mp, 0, n, cost);
+        int one = mp[1];
+        cout<<zero<<" "<<one<<endl;
+        return min(zero, one);
     }
 };
