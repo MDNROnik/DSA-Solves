@@ -18,8 +18,9 @@ public:
 
         int notpick = fun(mp, coins, amount, index+1, n);
         int pickandstay = 1 + fun(mp, coins, amount-coins[index], index, n);
-        int pickandforward = 1 + fun(mp, coins, amount-coins[index], index+1, n);
+        // int pickandforward = 1 + fun(mp, coins, amount-coins[index], index+1, n);
 
+        int pickandforward = 1e9;
         // cout<<notpick<<" "<<pickandstay<<" "<<pickandforward<<endl;
         return mp[index][amount] = min( notpick, min(pickandstay,pickandforward) );
     }
