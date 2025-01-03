@@ -6,7 +6,7 @@ public:
         if(amount==0){
             return 0;
         }
-        if(index>=coins.size() || amount<0){
+        if(index>=n || amount<0){
             return 1e9;
         }
         if(mp[index][amount]!= -1){
