@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int fun(vector<vector<int>> &mp, vector<int> &coins, int amount, int index){
+    int fun(vector<vector<int>> &mp, vector<int> &coins, int amount, int index, int n){
         
         //cout<<index<<" "<<amount<<endl;
         if(amount==0){
@@ -16,9 +16,9 @@ public:
         // int time = amount / coins[index];
         // int remain = amount % coins[index];
 
-        int notpick = fun(mp, coins, amount, index+1);
-        int pickandstay = 1 + fun(mp, coins, amount-coins[index], index);
-        int pickandforward = 1 + fun(mp, coins, amount-coins[index], index+1);
+        int notpick = fun(mp, coins, amount, index+1, n);
+        int pickandstay = 1 + fun(mp, coins, amount-coins[index], index, n);
+        int pickandforward = 1 + fun(mp, coins, amount-coins[index], index+1, n);
 
         // cout<<notpick<<" "<<pickandstay<<" "<<pickandforward<<endl;
         return mp[index][amount] = min( notpick, min(pickandstay,pickandforward) );
@@ -29,7 +29,7 @@ public:
         // map<pair<int,int> , int>mp;
         int n = coins.size();
         vector<vector<int>>mp(n, vector<int>(amount+1, -1));
-        int ans =  fun(mp, coins, amount, 0);
+        int ans =  fun(mp, coins, amount, 0, n);
         if(ans >= 1000000000 ){
             return -1;
         }
