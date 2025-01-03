@@ -1,39 +1,34 @@
 class Solution {
 public:
-    int minimumElementsUtil(vector<int>& arr, int ind, int T, vector<vector<int>>& dp){
-
-        if(ind == 0){
-
-            if(T % arr[0] == 0)
-                return T / arr[0]; 
-            else
-                return 1e9; 
+    int fun(map<pair<int,int>  , int> &mp, vector<int> &coins, int amount, int index){
+        //cout<<index<<" "<<amount<<endl;
+        if(amount==0){
+            return 0;
         }
-        
-        if(dp[ind][T] != -1)
-            return dp[ind][T];
-            
-        int notTaken = 0 + minimumElementsUtil(arr, ind - 1, T, dp);
-        
-        int taken = 1e9; 
-        if(arr[ind] <= T)
-            taken = 1 + minimumElementsUtil(arr, ind, T - arr[ind], dp);
-            
-        return dp[ind][T] = min(notTaken, taken);
+        if(index>=coins.size() || amount<0){
+            return 214748364;
+        }
+        if(mp[{index, amount}]>0){
+            return mp[{index, amount}];
+        }
+
+        // int time = amount / coins[index];
+        // int remain = amount % coins[index];
+
+        int notpick = fun(mp, coins, amount, index+1);
+        int pickandstay = 1 + fun(mp, coins, amount-coins[index], index);
+        int pickandforward = 1 + fun(mp, coins, amount-coins[index], index+1);
+
+        return mp[{index, amount}] = min( notpick, min(pickandstay,pickandforward) );
     }
-
-
-    int coinChange(vector<int>& arr, int T){
-        
-        int n = arr.size();
-        
-        vector<vector<int>> dp(n, vector<int>(T + 1, -1));
-        
-        int ans =  minimumElementsUtil(arr, n - 1, T, dp);
-        
-        if(ans >= 1e9)
+    int coinChange(vector<int>& coins, int amount) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(nullptr);
+        map<pair<int,int> , int>mp;
+        int ans =  fun(mp, coins, amount, 0);
+        if(ans == 214748364){
             return -1;
-        return ans; 
+        }
+        return ans;
     }
-    
 };
