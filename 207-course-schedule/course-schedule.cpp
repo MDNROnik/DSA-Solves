@@ -2,12 +2,11 @@ class Solution {
 public:
     bool canFinish(int numCourses, vector<vector<int>>& pre) {
         vector<int>indegree(numCourses, 0);
-        vector<int>visited(numCourses, 0);
+
         map<int,vector<int>>mp;
         int n= pre.size();
         for(int i=0;i<n;i++){
             mp[pre[i][1]].push_back(pre[i][0]);
-            visited[pre[i][1]]++;
             indegree[pre[i][0]]++;
         }
 
