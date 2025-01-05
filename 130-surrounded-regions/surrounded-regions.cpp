@@ -48,12 +48,7 @@ public:
     void solve(vector<vector<char>>& board) {
         int n=board.size();
         int m=board[0].size();
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                cout<<board[i][j]<<" ";
-            }
-            cout<<endl;
-        }
+        
         vector<vector<bool>> visited(n, vector<bool>(m, false));
         for(int i=1;i<n-1;i++){
             for(int j=1;j<m-1;j++){
@@ -67,19 +62,7 @@ public:
                 }
             }
         }
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                cout<<board[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-        cout<<endl;
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m;j++){
-                cout<<visited[i][j]<<" ";
-            }
-            cout<<endl;
-        }
+        
         return;
     }
 };
