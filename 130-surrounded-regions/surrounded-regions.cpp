@@ -59,8 +59,8 @@ public:
             for(int j=1;j<m-1;j++){
                 if(board[i][j]=='O' && visited[i][j]==false){
                     bool ans = fun(board, visited, n, m, i, j);
-                    cout<<i<<" "<<j<<endl;
-                    cout<<ans<<endl;
+                    //cout<<i<<" "<<j<<endl;
+                    //cout<<ans<<endl;
                     if (ans==false){
                         setx(board, visited, n, m, i, j);
                     }
