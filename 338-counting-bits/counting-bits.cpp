@@ -12,10 +12,9 @@ public:
         return mp[now] = bit+fun(remain , mp);
     }
     vector<int> countBits(int n) {
-        vector<int>ans;
         vector<int>mp(n+1, 0);
         for(int i=0;i<=n;i++){
-            ans.push_back( fun(i, mp) );
+            fun(i, mp) ;
         }
         return mp;
     }
