@@ -4,9 +4,12 @@ public:
         if(now == 0 || now == 1){
             return now;
         }
+        if(mp[now]!=0){
+            return mp[now];
+        }
         int bit = now % 2;
         int remain = now / 2;
-        return bit+fun(remain , mp);
+        return mp[now] = bit+fun(remain , mp);
     }
     vector<int> countBits(int n) {
         vector<int>ans;
