@@ -1,17 +1,19 @@
 class Solution {
 public:
-    vector<int> countBits(int n) {
-        vector<int>res;
-        for(int i=0;i<=n;i++){
-            int cnt=0;
-            int temp=i;
-            while(temp>0){
-                if(temp&1 !=0 ){cnt++;}
-                temp>>=1;
-            }
-            res.push_back(cnt);
+    int fun(int now, map<int,int> &mp){
+        if(now == 0 || now == 1){
+            return now;
         }
-        return res;
+        int bit = now % 2;
+        int remain = now / 2;
+        return bit+fun(remain , mp);
     }
-
+    vector<int> countBits(int n) {
+        vector<int>ans;
+        map<int,int>mp;
+        for(int i=0;i<=n;i++){
+            ans.push_back( fun(i, mp) );
+        }
+        return ans;
+    }
 };
