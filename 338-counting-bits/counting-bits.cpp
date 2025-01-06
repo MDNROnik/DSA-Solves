@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int fun(int now, map<int,int> &mp){
+    int fun(int now, vector<int>&mp){
         if(now == 0 || now == 1){
             return now;
         }
@@ -13,7 +13,7 @@ public:
     }
     vector<int> countBits(int n) {
         vector<int>ans;
-        map<int,int>mp;
+        vector<int>mp(n+10, 0);
         for(int i=0;i<=n;i++){
             ans.push_back( fun(i, mp) );
         }
