@@ -7,7 +7,7 @@ public:
         for(int i=0;i<n;i++){
             int re = bills[i]-5;
             if( ( (ten*10)+(five*5)+(tw*20) ) >= re ){
-                cout<<five<<" IN "<<ten<<" "<<tw<<endl;
+                //cout<<five<<" IN "<<ten<<" "<<tw<<endl;
                 //20
                 int note = re/20;
                 if(tw>=note){
@@ -48,7 +48,7 @@ public:
                 else{
                     tw++;
                 }
-                cout<<five<<" OUT "<<ten<<" "<<tw<<endl;
+                //cout<<five<<" OUT "<<ten<<" "<<tw<<endl;
             }
             else{
                 return false;
