@@ -18,6 +18,8 @@ public:
         return v[index] = 0;
     }
     bool canJump(vector<int>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         int n = nums.size();
         vector<int>v(n+10 , -1);
         return bool(fun(nums, 0, n, v));
