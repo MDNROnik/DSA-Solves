@@ -1,34 +1,37 @@
+#define ll long long
 class Solution {
 public:
-    int jump(vector<int>& nums) {
-        int ans = 0;
-        int n=nums.size();
-        if(n==1){return 0;}
-        for(int i=0;i<n;){
-            int can = nums[i];
-            int maxi = 0, j = 0, in = i, jn =i;
-            cout<<i<<" "<<nums[i]<<endl;
-            for(j=i+1; can>0 &&  j<n ;j++){
-                cout<<j<<" -- "<<nums[j]<<endl;
-                
-                if( j+nums[j] >maxi || j+nums[j]>=n-1){
-                    if(j+nums[j]>=n-1){}
-                    maxi=j+nums[j];
-                    in=j;
-                }
-                // if(maxi<nums[j]){
-                //     maxi=nums[j];
-                //     in=j;
-                // }
-                can--;
-            }
-            ans++;
-            i=in;
-            //cout<<i<<" "<<nums[i]<<endl<<endl;;
-            if(i>=n-1){break;}
+
+    ll fun(vector<int> &nums, int index, int &n, vector<ll> &v, vector<bool> &vis){
+        if(index==n-1){
+            return 1;
         }
 
+        if( vis[index] ){return v[index];}
         
-        return ans;
+        ll miniStep = INT_MAX;
+        
+        for(int i=1;i<=nums[index];i++){
+            if(index+i < n){
+                ll value = fun(nums, index+i, n, v, vis);
+                miniStep = min(miniStep, value);
+            }
+        }
+        vis[index] = true;
+        return v[index] = miniStep+1;
+    }
+    int jump(vector<int> &nums) 
+    {
+            ios_base::sync_with_stdio(false);
+            cin.tie(NULL);
+            int n=nums.size();
+            vector<ll>v(n+10 , INT_MAX);
+            vector<bool>vis (n+10, false);
+            if(n==1){return 0;}
+            fun(nums, 0, n, v, vis);
+            v[0]-=1;
+
+            if(v[0]==INT_MAX){return -1;}
+            return v[0];
     }
 };
