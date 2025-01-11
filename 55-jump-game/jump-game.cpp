@@ -1,43 +1,20 @@
 class Solution {
 public:
     bool canJump(vector<int>& nums) {
-        int result = 1;
-        int n=nums.size();
+        int init = 0, n=nums.size();
         for(int i=0;i<n;i++){
-            if(nums[i]==0 && i+1==n){
-                int count=0;
-                for(int j=i;j>=0;j--){
-                    if(count<=nums[j]){
-                        count=0;
-                        break;
-                    }
-                    count++;
-                }
-                if(count!=0){
-                    result=0;
-                    break;
-                }
+            int step = nums[i]+i;
+            //cout<<step<<" "<<init<<endl;
+            if(nums[i]==0 && step==init && i!=n-1){
+                return false;
             }
-            else if(nums[i]==0){
-                int count=1;
-                for(int j=i;j>=0;j--){
-                    if(count<=nums[j]){
-                        count=0;
-                        break;
-                    }
-                    count++;
-                }
-                if(count!=0){
-                    result=0;
-                    break;
-                }
-            }
+
+            init = max(init, step);
         }
-        if(result || n==1){
-            return true;
-        }
-        else{
+        if(init < n-1){
+            cout<<111<<endl;
             return false;
         }
+        return true;
     }
 };
