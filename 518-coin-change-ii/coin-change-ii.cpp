@@ -11,9 +11,8 @@ public:
         if(v[index][amount] != -1){
             return v[index][amount];
         }
-        int take = fun(v, amount-coins[index], index, coins, n);
         int not_take = fun(v, amount, index+1, coins, n);
-
+        int take = fun(v, amount-coins[index], index, coins, n);
         return v[index][amount] = (take + not_take);
     }
     int change(int amount, vector<int>& coins) {
