@@ -5,10 +5,7 @@ public:
         if(amount==0){
             return 1;
         }
-        else if(amount<0){
-            return 0;
-        }
-        if(index>=n){
+        else if(amount<0 || index>=n){
             return 0;
         }
         if(v[index][amount] != -1){
@@ -20,8 +17,8 @@ public:
         return v[index][amount] = (take + not_take);
     }
     int change(int amount, vector<int>& coins) {
-        // ios_base::sync_with_stdio(false);
-        // cin.tie(NULL);
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
         int n = coins.size();
         vector<vector<int>>v(n+10, vector<int>(amount+10, -1));
         return fun(v, amount, 0, coins, n);
