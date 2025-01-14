@@ -19,10 +19,8 @@ public:
         int now = total + nums[index];
         int now2= total + (nums[index]*(-1));
 
-        v.push_back(nums[index]);
         int positive = fun(visited, value, index+1, now, n, target, nums, v);
 
-        v.pop_back();v.push_back(nums[index]*(-1));
         int negative = fun(visited, value, index+1, now2, n, target, nums, v);
 
         visited[{index, total}]=true;
