@@ -1,10 +1,9 @@
 class Solution {
 public:
     int fun(map<pair<int,int>, bool> &visited, map<pair<int,int>, int> &value, int index, int total,int n, int target,
-    vector<int>& nums, vector<int> &v){
+    vector<int>& nums){
         if(index>=n){
             if(total==target){
-                cout<<1111<<endl;
                 return 1;
             }
             else{
@@ -12,21 +11,18 @@ public:
             }
         }
         if(visited[{index, total}]==true){
-            //cout<<1111<<endl;
             return value[{index, total}];
         }
-        //cout<<index<<endl;
         int now = total + nums[index];
         int now2= total + (nums[index]*(-1));
 
-        int positive = fun(visited, value, index+1, now, n, target, nums, v);
+        int positive = fun(visited, value, index+1, now, n, target, nums);
 
-        int negative = fun(visited, value, index+1, now2, n, target, nums, v);
+        int negative = fun(visited, value, index+1, now2, n, target, nums);
 
         visited[{index, total}]=true;
 
         int total2 = positive + negative;
-        //cout<<positive<<" "<<negative<<endl;
         return value[{index, total}] = total2;
 
     }
@@ -34,7 +30,6 @@ public:
         map<pair<int,int>, bool> visited;
         map<pair<int,int>, int> value;
         int n = nums.size();
-        vector<int>v;
-        return fun(visited, value, 0, 0, n, target, nums, v);
+        return fun(visited, value, 0, 0, n, target, nums);
     }
 };
