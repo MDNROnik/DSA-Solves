@@ -13,12 +13,10 @@ public:
         if(visited[{index, total}].first==true){
             return visited[{index, total}].second;
         }
-        int now = total + nums[index];
-        int now2= total + (nums[index]*(-1));
 
-        int positive = fun(visited, index+1, now, n, target, nums);
+        int positive = fun(visited, index+1, total + nums[index], n, target, nums);
 
-        int negative = fun(visited, index+1, now2, n, target, nums);
+        int negative = fun(visited, index+1, total + (nums[index]*(-1)), n, target, nums);
 
         visited[{index, total}].first=true;
 
