@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int fun(map<pair<int,int>, pair<bool,int>>&visited, int index, int total,int n, int target,
+    int fun(map<pair<int,int>, pair<bool,int>>&visited, int index, int total,int &n, int &target,
     vector<int>& nums){
         if(index>=n){
             if(total==target){
