@@ -1,35 +1,42 @@
 class Solution {
 public:
-
-    int editDistanceUtil(string& S1, string& S2, int i, int j, vector<vector<int>>& dp) {
-        if (i < 0)
-            return j + 1;
-        if (j < 0)
-            return i + 1;
-
-        if (dp[i][j] != -1)
-            return dp[i][j];
-
-        if (S1[i] == S2[j])
-            return dp[i][j] = 0 + editDistanceUtil(S1, S2, i - 1, j - 1, dp);
-
-        // Minimum of three choices:
-        // 1. Replace the character at S1[i] with the character at S2[j]
-        // 2. Delete the character at S1[i]
-        // 3. Insert the character at S2[j] into S1
-        else
-            return dp[i][j] = 1 + min(editDistanceUtil(S1, S2, i - 1, j - 1, dp),
-                                    min(editDistanceUtil(S1, S2, i - 1, j, dp),
-                                        editDistanceUtil(S1, S2, i, j - 1, dp)));
+    int fun(string &word1, int i, string &word2, int j, vector<vector<vector<int>>> &v, int matchs, int &n, int &m, int mode){
+       
+        if(i==n && j==m){
+            cout<<1<<endl;
+            if(matchs==m){
+                return 0;
+            }
+            else{
+                return 10000;
+            }
+        }
+        else if(i==n && j<m){
+            return (m-j);
+        }
+        else if(i<n && j==m){
+            return (n-i);
+        }
+        if(v[i][j][mode] != -1){
+            return v[i][j][mode];
+        }
+        int match=10000, remove=10000, replace=10000, insert=10000;
+        if(word1[i]==word2[j]){
+            match = fun(word1, i+1, word2, j+1, v, matchs+1, n, m, 1);
+        }
+        else{
+            remove = 1 + fun(word1, i+1, word2, j, v, matchs, n, m, 2);
+            replace = 1 + fun(word1, i+1, word2, j+1, v, matchs+1, n, m, 3);
+            insert = 1 + fun(word1, i, word2, j+1, v, matchs+1, n, m, 4);
+        }
+        return v[i][j][mode] = min(match, min(remove, min(replace, insert)));
     }
+    int minDistance(string word1, string word2) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        int n=word1.size(), m=word2.size();
+        vector<vector<vector<int>>>v(n+10,vector<vector<int>>(m+10, vector<int>(10, -1)));
 
-    int minDistance(string& S1, string& S2) {
-        int n = S1.size();
-        int m = S2.size();
-
-        vector<vector<int>> dp(n, vector<int>(m, -1));
-
-        return editDistanceUtil(S1, S2, n - 1, m - 1, dp);
+        return fun(word1, 0, word2, 0, v, 0, n, m, 0);
     }
-
 };
