@@ -4,6 +4,7 @@ public:
        
         if(i==n && j==m){
             cout<<1<<endl;
+            return 0;
             if(matchs==m){
                 return 0;
             }
