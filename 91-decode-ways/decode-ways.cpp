@@ -17,7 +17,7 @@ public:
         if(i+1<n){
             now+=s[i+1]-'0';
             if(now>0 && now<27){
-                cout<<"step 2 " <<s[i]<<s[i+1]<<endl;
+                //cout<<"step 2 " <<s[i]<<s[i+1]<<endl;
                 twoStep = fun(v, n, s, i+2);
             }
         }
