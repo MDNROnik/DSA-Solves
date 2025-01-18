@@ -1,21 +1,28 @@
-#define ll long long
 class Solution {
 public:
-    int fun(vector<int>& nums , vector<vector<int>>& dp, int pre, int now){
-        if(now==nums.size()){return 0;}
-        if(dp[now][pre+1] != -1){
-            return dp[now][pre+1] ;
+    int fun(vector<int>& nums, vector<vector<int>> &v, int i, int prev,int &n, int mode){
+        
+        if(i==n){
+            return 0;
         }
-        int not_pick = fun(nums,dp,pre,now+1);
-        int pick = 0;
-        if(pre==-1 || nums[pre]<nums[now]){
-            pick = 1 + fun(nums,dp,now,now+1);
+
+        if(v[i][prev+1]!=-1){
+            return v[i][prev+1];
         }
-        return dp[now][pre+1] = max(not_pick,pick);
+
+        int allow=0, not_allow=0;
+        not_allow = fun(nums, v, i+1, prev, n, 1); 
+        if(prev==-1 ||nums[prev]<nums[i]){
+
+            allow =1 + fun(nums, v, i+1, i, n, 2); 
+        }
+        
+        return v[i][prev+1] = max(allow, not_allow);
     }
     int lengthOfLIS(vector<int>& nums) {
-       int n = nums.size();
-       vector<vector<int>> dp(n+1, vector<int>(n + 1, -1));
-       return fun(nums,dp,-1,0);
+        int prev= -1;
+        int n=nums.size();
+        vector<vector<int>>v(n+10, vector<int>(n+10, -1));
+        return fun(nums, v, 0, prev, n,0);
     }
 };
