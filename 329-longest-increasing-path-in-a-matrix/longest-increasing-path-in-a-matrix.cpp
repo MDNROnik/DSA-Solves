@@ -10,19 +10,19 @@ public:
         int left = 0, right = 0, up = 0, down = 0;
         //cout<<matrix[i][j]<<endl;
         if(i-1>=0 && matrix[i-1][j]<matrix[i][j]){
-            cout<<"UP"<<endl;
+            // cout<<"UP"<<endl;
             up = 1 + fun(matrix, v, i-1, j, n, m);
         }
         if(j-1>=0 && matrix[i][j-1]<matrix[i][j]){
-            cout<<"LEFT"<<endl;
+            // cout<<"LEFT"<<endl;
             left = 1+ fun(matrix, v, i, j-1, n, m);
         }
         if(i+1<n && matrix[i+1][j]<matrix[i][j]){
-            cout<<"DOWN"<<endl;
+            // cout<<"DOWN"<<endl;
             down = 1+ fun(matrix, v, i+1, j, n, m);
         }
         if(j+1<m && matrix[i][j+1]<matrix[i][j]){
-            cout<<"RIGHT"<<endl;
+            // cout<<"RIGHT"<<endl;
             right = 1+ fun(matrix, v, i, j+1, n, m);
         }
         return v[i][j] = max( max(left, right), max(up, down)  );
@@ -40,14 +40,7 @@ public:
             }
 
         }
-        for(int i=0;i<n;i++){
-            for(int j=0;j<m ;j++){
-                cout<<v[i][j]<<" ";
-            }
-            cout<<endl;
-        }
-        
-        
+        //  
         
 
         return ans+1;
