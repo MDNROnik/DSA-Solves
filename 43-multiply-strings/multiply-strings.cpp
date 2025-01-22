@@ -34,9 +34,9 @@ public:
             vs.push_back(now);
         }
         string ans;
-        for(int i=0;i<vs.size();i++){
-            cout<<vs[i]<<endl;
-        }
+        // for(int i=0;i<vs.size();i++){
+        //     cout<<vs[i]<<endl;
+        // }
         int carry = 0;
         for(int j=0;j<vs[0].size();j++){
             int now=0;  
