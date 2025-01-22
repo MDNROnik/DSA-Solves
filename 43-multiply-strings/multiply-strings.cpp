@@ -16,8 +16,6 @@ public:
             for(int j=num1.size()-1;j>=0;j--){
                 int x= num2[i]-'0';
                 int y= num1[j]-'0';
-                //cout<<x<<" "<<y<<endl;
-
                 int z = x*y;
                 z+=carry;
                 string stri = to_string(z);
@@ -25,41 +23,14 @@ public:
                 int remain = z/10;
                 carry=remain;
                 now.push_back(num+'0');
-                //cout<<"TOTLA"<<endl;
-                //cout<<z<<endl;
-                // if(stri.size()>1){
-                //     //cout<<"size is 2"<<endl;
-                //     string a;
-                //     string b;
-                //     a.push_back(stri[0]);
-                //     b.push_back(stri[1]);
-                //     now+=(b);
-                //     carry = a[0]-'0';
-                // }
-                // else{
-                //     //cout<<"size is 1"<<endl;
-                //     string a;
-                //     string b;
-                //     a.push_back(stri[0]);
-                //     b.push_back(stri[1]);
-                //     now+=(a);
-                //     //cout<<a<<" "<<b<<endl;
-                //     carry = 0;
-                // }
-                //cout<<now<<endl;
             }
             if(carry>0){
-                //cout<<" "<<carry<<endl;
                 now.push_back(carry+'0');
-                //<<now<<endl;
             }
             gap++;
-            //cout<<now<<" " ;
             for(int j=0;j<(siz-gap);j++){
                 now.push_back('0');
             }
-            //cout<<now;
-            //cout<<endl<<endl;
             vs.push_back(now);
         }
         string ans;
@@ -80,29 +51,6 @@ public:
             int remain = z/10;
             carry=remain;
             ans.push_back(num+'0');
-            //cout<<num<<" "<<remain<<endl;
-            //cout<<z<<endl;
-           // cout<<z<<" "<<carry<<endl;
-            // if(stri.size()>1){
-            //     //cout<<"size is 2"<<endl;
-            //     string a;
-            //     string b;
-            //     a.push_back(stri[0]);
-            //     b.push_back(stri[1]);
-            //     ans+=(b);
-            //     carry = a[0]-'0';
-            // }
-            // else{
-            //     //cout<<"size is 1"<<endl;
-            //     string a;
-            //     string b;
-            //     a.push_back(stri[0]);
-            //     b.push_back(stri[1]);
-            //     ans+=(a);
-            //     //cout<<a<<" "<<b<<endl;
-            //     carry = 0;
-            // }
-            //cout<<ans<<endl;
         }
         if(carry>0){
             ans.push_back(carry+'0');
@@ -112,11 +60,8 @@ public:
             ans.pop_back();
             s=ans.size()-1;
         }
-       // cout<<endl;
-        cout<<ans<<endl;
         reverse(ans.begin(),ans.end());
         int n = 7;
-       
         return ans;
     }
 };
