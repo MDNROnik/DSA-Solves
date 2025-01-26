@@ -9,7 +9,7 @@ public:
             totalGas+=gas[i];
             totalCost+=cost[i];
             if(totalGas<totalCost){
-                latest=i;
+                // latest=i;
             }
         }
         if(totalGas<totalCost){
@@ -20,7 +20,6 @@ public:
         for(int i=0;i<n;i++){
             gg+=gas[i], cc+=cost[i];
             if(gg<cc || (pre==i-1 && gg>cc)){
-                cout<<i<<endl;
                 pre=i;
                 int g=0, c=0, now=0;
                 for(int j=i;j<n;j++){
@@ -40,9 +39,14 @@ public:
                 }
                 if(now==1){continue;}
                 if(now==0){
+                    cout<<i<<endl;
                     latest=i;break;
                 }
             }
+        }
+        if(latest>0){
+            // cout<<latest<<endl;
+            return latest;
         }
         int i=n-1;
         while(i<n){
