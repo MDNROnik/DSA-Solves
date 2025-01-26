@@ -15,7 +15,7 @@ public:
         if(totalGas<totalCost){
             return -1;
         }
-        latest=0;
+        // latest=0;
         int gg=0, cc=0, pre=-1;
         for(int i=0;i<n;i++){
             gg+=gas[i], cc+=cost[i];
