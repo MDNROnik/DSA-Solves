@@ -1,10 +1,10 @@
 class Solution {
 public:
     int canCompleteCircuit(vector<int>& gas, vector<int>& cost) {
-        int n=cost.size();
-        int totalGas=0, totalCost=0, latest=-1;
         ios_base::sync_with_stdio(false);
         cin.tie(NULL);
+        int n=cost.size();
+        int totalGas=0, totalCost=0, latest=-1;
         for(int i=0;i<n;i++){
             totalGas+=gas[i];
             totalCost+=cost[i];
