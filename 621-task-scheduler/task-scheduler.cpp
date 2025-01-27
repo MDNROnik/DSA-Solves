@@ -8,43 +8,43 @@ public:
             ind-=65;
             v[ind]++;
         }
-        if(m==1){
-            vector<int>count;
-            for(int i=0;i<30;i++){
-                if(v[i]>0){
-                    count.push_back(v[i]);
-                }
-            }
-            sort(count.begin(),count.end());
-            int id=0, ans=0, l=0, r=count.size()-1;
+        // if(m==1){
+        //     vector<int>count;
+        //     for(int i=0;i<30;i++){
+        //         if(v[i]>0){
+        //             count.push_back(v[i]);
+        //         }
+        //     }
+        //     sort(count.begin(),count.end());
+        //     int id=0, ans=0, l=0, r=count.size()-1;
 
-            while(n>0){
-                int loop=0;
-                while(count[l]==0){
-                    l++;
-                }
-                while(count[r]==0){
-                    r--;
-                }
-                while(l<=r){
-                    if(id<=m && id!=0){
-                        break;
-                    }
-                    id++;n--;count[l]--;ans++;
-                    if(count[l]==0){l++;}
-                    if(l>=r){break;}
-                    id++,n--;count[r]--;ans++;
-                    if(count[r]==0){r--;}
-                }
-                if( ((id<=m && count.size()==1) || id<m) && n>0){
-                    ans+=(m-id)+1;
-                }
-                id=0;
-                l=0;
-                r=count.size()-1;
-            }
-            return ans;
-        }
+        //     while(n>0){
+        //         int loop=0;
+        //         while(count[l]==0){
+        //             l++;
+        //         }
+        //         while(count[r]==0){
+        //             r--;
+        //         }
+        //         while(l<=r){
+        //             if(id<=m && id!=0){
+        //                 break;
+        //             }
+        //             id++;n--;count[l]--;ans++;
+        //             if(count[l]==0){l++;}
+        //             if(l>=r){break;}
+        //             id++,n--;count[r]--;ans++;
+        //             if(count[r]==0){r--;}
+        //         }
+        //         if( ((id<=m && count.size()==1) || id<m) && n>0){
+        //             ans+=(m-id)+1;
+        //         }
+        //         id=0;
+        //         l=0;
+        //         r=count.size()-1;
+        //     }
+        //     return ans;
+        // }
         vector<int>count;
         for(int i=0;i<26;i++){
             if(v[i]>0){
@@ -64,9 +64,6 @@ public:
             sort(c.begin(),c.end());
             reverse(c.begin(),c.end());
 
-            // while(id!=0 && id<=m){
-            //     id++;ans++;
-            // }
             if(id!=0 && id<=m){
                 ans+=(m-id)+1;
             }
