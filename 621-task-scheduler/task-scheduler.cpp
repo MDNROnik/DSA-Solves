@@ -64,8 +64,11 @@ public:
             sort(c.begin(),c.end());
             reverse(c.begin(),c.end());
 
-            while(id!=0 && id<=m){
-                id++;ans++;
+            // while(id!=0 && id<=m){
+            //     id++;ans++;
+            // }
+            if(id!=0 && id<=m){
+                ans+=(m-id)+1;
             }
             id=0;
             int i=0;
