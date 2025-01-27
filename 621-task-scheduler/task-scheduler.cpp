@@ -16,14 +16,9 @@ public:
                 }
             }
             sort(count.begin(),count.end());
-            for(int i=0;i<count.size();i++){
-                cout<<count[i]<<" ";
-            }
-            cout<<endl;
             int id=0, ans=0, l=0, r=count.size()-1;
 
             while(n>0){
-                cout<<n<<endl;
                 int loop=0;
                 while(count[l]==0){
                     l++;
@@ -32,7 +27,6 @@ public:
                     r--;
                 }
                 while(l<=r){
-                    cout<<l<<" "<<r<<" "<<id<<endl;
                     if(id<=m && id!=0){
                         break;
                     }
@@ -42,8 +36,6 @@ public:
                     id++,n--;count[r]--;ans++;
                     if(count[r]==0){r--;}
                 }
-                cout<<id<<" end of while loop "<<m<<endl;
-                cout<<l<<" "<<r<<" "<<id<<endl<<endl;
                 if( ((id<=m && count.size()==1) || id<m) && n>0){
                     ans+=(m-id)+1;
                 }
@@ -71,31 +63,20 @@ public:
             }
             sort(c.begin(),c.end());
             reverse(c.begin(),c.end());
-            // for(int i=0;i<c.size();i++){
-            //     cout<<c[i]<<" ";
-            // }
-            // cout<<endl;
-            // cout<<id<<" "<<ans<<endl;
+
             while(id!=0 && id<=m){
-                // cout<<c.size()<<endl;
                 id++;ans++;
             }
-            for(int i=0;i<c.size();i++){
-                cout<<c[i]<<" A ";
-            }
-            cout<<endl;
             id=0;
             int i=0;
             
             for(;i<c.size();i++){
-                // cout<<i<<" "<<id<<endl;
                 if(c[i]>0){
                     ans++;
                     c[i]--;
                     id++;
                     n--;
                 }
-                // cout<<i<<" "<<id<<endl<<endl;;
                 if(id>m){
                     sort(c.begin(),c.end());
                     reverse(c.begin(),c.end());
