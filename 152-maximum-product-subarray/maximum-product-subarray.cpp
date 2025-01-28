@@ -12,7 +12,7 @@ public:
         int m2 = now.second;
         int maxi = now.first*nums[i];
         int mini = now.second*nums[i];
-        nums[i]*=1;
+   
         int first = max(maxi, max(nums[i], mini));
         int second = min(maxi, min(nums[i], mini));
 
