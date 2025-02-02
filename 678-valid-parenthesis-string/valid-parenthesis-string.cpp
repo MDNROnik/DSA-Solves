@@ -1,9 +1,9 @@
 class Solution {
 public:
     int check(string &s, int &n, int i, int l, int r, map<pair<int, stack<char>>, int> &mp, stack<char> &str){
-        // if(l<r){
-        //     return 1;
-        // }
+        if(l<r){
+            return 1;
+        }
         if(n==i){
             if(l==r){
                 return 2;
