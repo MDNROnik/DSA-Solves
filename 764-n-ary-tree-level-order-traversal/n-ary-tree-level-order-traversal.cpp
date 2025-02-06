@@ -41,7 +41,7 @@ public:
             }
             q.pop();
         }
-        for(int i=0;i<=l;i++){
+        for(int i=0;i<1000;i++){
             if(v2[i].size()>0){
                 cout<<v2[i].size()<<endl;
                 v.push_back(v2[i]);
