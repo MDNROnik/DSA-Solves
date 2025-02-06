@@ -5,10 +5,7 @@ public:
         int node = n;
         int m = times.size();
         for(int i=0;i<m;i++){
-            int source = times[i][0];
-            int target = times[i][1];
-            int time = times[i][2];
-            v[source].push_back({target,time});
+            v[times[i][0]].push_back({times[i][1],times[i][2]});
         }
         int ans = INT_MIN;
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
@@ -22,19 +19,16 @@ public:
             pq.pop();
             int m = v[source].size();
             for(int i=0;i<m;i++){
-                int target = v[source][i].first;
-                int spentTime = v[source][i].second;
-                // cout<<source<<" "<<target<<" "<<dist[target]<<" "<<dis+spentTime<<endl;
-                if(dist[target] > dis+spentTime){
-                    if(dist[target]==INT_MAX){
+
+                if(dist[v[source][i].first] > dis+v[source][i].second){
+                    if(dist[v[source][i].first]==INT_MAX){
                         n-=1;
                     }
-                    dist[target] = dis+spentTime;
-                    pq.push({dist[target], target});
+                    dist[v[source][i].first] = dis+v[source][i].second;
+                    pq.push({dist[v[source][i].first], v[source][i].first});
                 }
             }
         }
-        // cout<<n<<endl;
         if(n>0){
             return -1;
         }
