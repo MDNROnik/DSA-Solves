@@ -1,7 +1,7 @@
 class Solution {
 public:
     int networkDelayTime(vector<vector<int>>& times, int n, int k) {
-        vector<vector<pair<int,int>>>v(n+10);
+        vector<vector<pair<int,int>>>v(n+1);
         int node = n;
         int m = times.size();
         for(int i=0;i<m;i++){
@@ -12,7 +12,7 @@ public:
         }
         int ans = INT_MIN;
         priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-        vector<int>dist(n+10, INT_MAX);
+        vector<int>dist(n+1, INT_MAX);
         pq.push({0, k});
         dist[k]=0;
         n-=1;
