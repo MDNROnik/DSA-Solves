@@ -28,6 +28,7 @@ public:
         queue<pair<Node*, int>>q;
         q.push({root, 0});
         vector<vector<int>>v2(1000);
+        int l=0;
         while(!q.empty()){
             pair<Node*, int> p =q.front();
             Node* now = q.front().first;
@@ -36,10 +37,11 @@ public:
             vector<Node*> child = q.front().first->children;
             for(int i=0;i<child.size();i++){
                 q.push({child[i],level+1});
+                l= max(l, level+1);
             }
             q.pop();
         }
-        for(int i=0;i<1000;i++){
+        for(int i=0;i<=l;i++){
             if(v2[i].size()>0){
                 cout<<v2[i].size()<<endl;
                 v.push_back(v2[i]);
