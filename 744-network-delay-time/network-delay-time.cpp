@@ -30,7 +30,7 @@ public:
                         n-=1;
                     }
                     dist[target] = dis+spentTime;
-                    pq.push({dis+spentTime, target});
+                    pq.push({dist[target], target});
                 }
             }
         }
