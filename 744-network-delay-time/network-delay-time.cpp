@@ -24,7 +24,7 @@ public:
             for(int i=0;i<m;i++){
                 int target = v[source][i].first;
                 int spentTime = v[source][i].second;
-                cout<<source<<" "<<target<<" "<<dist[target]<<" "<<dis+spentTime<<endl;
+                // cout<<source<<" "<<target<<" "<<dist[target]<<" "<<dis+spentTime<<endl;
                 if(dist[target] > dis+spentTime){
                     if(dist[target]==INT_MAX){
                         n-=1;
@@ -34,7 +34,7 @@ public:
                 }
             }
         }
-        cout<<n<<endl;
+        // cout<<n<<endl;
         if(n>0){
             return -1;
         }
