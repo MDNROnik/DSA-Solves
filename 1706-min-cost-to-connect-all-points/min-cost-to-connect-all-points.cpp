@@ -8,16 +8,19 @@ public:
         gq.push({0, n-1});
         // mp[{points[n-1][0], points[n-1][1]}].first=true;
         mp[{points[n-1][0], points[n-1][1]}].second = 0;
-        int a=0;
+        long long a=0;
         while(!gq.empty()){
             int index=gq.top().second;
             int dis = gq.top().first;
             gq.pop();
             int row = points[index][0];
             int col = points[index][1];
+            if(mp[{row, col}].first==2 || mp[{row, col}].second<dis){continue;}
             mp[{row, col}].first=2;
-            // a+=dis;
-            // cout<<row<<" "<<col<<endl;
+            // cout<<dis<<endl;
+            a+=dis;
+            int c=0;
+            cout<<row<<" "<<col<<" "<<dis<<endl;
             for(int i=0;i<n;i++){
                 int row2 = points[i][0];
                 int col2 = points[i][1];
@@ -34,14 +37,20 @@ public:
                 if( mp[{row2, col2}].second > sum){
                     mp[{row2, col2}].second=sum;
                     gq.push({sum, i});
+                    c++;
                 }
             }
+            // if(c>0){
+            //     // cout<<row<<" "<<col<<endl; 
+            //     a+=dis;
+            // }
         }
         int ans = 0;
-        for(auto a=mp.begin();a!=mp.end();a++){
-            // cout<<a->first.first<<" "<<a->first.second<<" --- "<<a->second.first<<" "<<a->second.second<<endl;
-            ans+=a->second.second;
-        }
-        return ans;
+        // for(auto a=mp.begin();a!=mp.end();a++){
+        //     // cout<<a->first.first<<" "<<a->first.second<<" --- "<<a->second.first<<" "<<a->second.second<<endl;
+        //     ans+=a->second.second;
+        // }
+        cout<<a<<endl;
+        return a;
     }
 };
