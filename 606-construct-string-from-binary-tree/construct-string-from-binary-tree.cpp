@@ -11,28 +11,24 @@
  */
 class Solution {
 public:
-    int fun(TreeNode* root, string &ans, int &now){
+    void fun(TreeNode* root, string &ans){
         if(root==NULL){
-            return 1;
+            return ;
         }
-        ans+="("; now+=1;
+        ans.append("(");
         string stri = to_string(root->val);
-        ans+=stri;now+=1;
-        int index = now;
+        ans.append(stri);
         if(root->left==NULL && root->right!=NULL){
-            ans+="()";
+            ans.append("()");
         }
-        int l = fun(root->left, ans, now);
-        int r = fun(root->right, ans, now);
-        // str.insert(str.begin() + 8, 'G');
-        ans+=")";
-        now+=1;
-        return 0;
+        fun(root->left, ans);
+        fun(root->right, ans);
+        ans.append(")");
+        return ;
     }
     string tree2str(TreeNode* root) {
         string ans ="";
-        int now = -1;
-        fun(root, ans, now);
+        fun(root, ans);
         int n = ans.size();
         ans.erase(ans.begin() + n-1);
         ans.erase(ans.begin() + 0);
