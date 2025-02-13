@@ -4,7 +4,9 @@ public:
     int leastBricks(vector<vector<int>>& wall) {
         int n = wall.size();
         int ans = n;
-        map<int,int>mp;
+        // int sum = (2147483648*(2147483648+1))/2;
+        // vector<int>store(sum , 0);
+        unordered_map<int,int>mp;
         for(int i=0;i<n;i++){
             int m = wall[i].size();
             ll now = 0;
@@ -13,10 +15,10 @@ public:
                 mp[now]++;
                 // cout<<mp[now]<<endl;
                 int temp = n-mp[now];
-                cout<<now<<" "<<temp<<endl;
+                // cout<<now<<" "<<temp<<endl;
                 ans = min(ans, temp);
             }
-            cout<<endl;
+            // cout<<endl;
         }
 
         if(n==1 && wall[0].size()>1){
