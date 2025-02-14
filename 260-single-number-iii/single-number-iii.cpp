@@ -6,25 +6,21 @@ public:
         for(int i=0;i<n;i++){
             num^=nums[i];
         }
-        cout<<num<<endl;
         vector<int>v;
         for(int i=0;i<n;i++){
             int now = num^nums[i];
-            // cout<<nums[i]<<" "<<now<<endl;
-            int c=0, c2=0;
+            int c=0, first = 0;
             for(int j=0;j<n;j++){
-                // if(nums[j]==nums[i]){
-                //     c++;
-                // }
                 if(now==nums[j]){
-                    v.push_back(nums[j]);
+                    c++;first=j;
                 }
             }
-            if(v.size()>1){
-                v.clear();
+            if(c>1){
             }
-            else if(v.size()>0){
-                v.push_back(nums[i]);break;
+            else if(c>0){
+                v.push_back(nums[first]);
+                v.push_back(nums[i]);
+                break;
             }
         }
         return v;
