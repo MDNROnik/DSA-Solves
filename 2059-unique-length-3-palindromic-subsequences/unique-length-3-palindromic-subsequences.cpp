@@ -20,32 +20,16 @@ public:
             int left = index[i][0];
             int right = index[i][1];
             if(left==-1){continue;}
-            // cout<<left<<" "<<right<<endl;
             int count=0;
-            // for(int j=0;j<26;j++){
-            //     cout<<vec[left][j]<<" ";
-            // }
-            // cout<<endl;
-            // for(int j=0;j<26;j++){
-            //     cout<<vec[right][j]<<" ";
-            // }
-            // cout<<endl;
+
             for(int j=0;j<26;j++){
                 if( (vec[right][j]-vec[left][j]) >=1  && vec[right][j]==2 && j==i){
-                    cout<<111<<endl;
                 }
                 else if( (vec[right][j]-vec[left][j]) >=1 ){
-                    cout<<222<<endl;
                     count++;
                 }
             }
-            // cout<<count<<endl;
             ans+=count;
-            // cout<<endl;
-            // for(int j=0;j<26;j++){
-            //     cout<<vec[right][j]<<" ";
-            // }
-            // cout<<endl;
         }
         return ans;
     }
