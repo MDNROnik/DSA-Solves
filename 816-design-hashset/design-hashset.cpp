@@ -1,10 +1,9 @@
-int n = 1000000;
-// vector<bool>hash_set(n, false);
-map<int,bool>hash_set;
+
 class MyHashSet {
 public:
+vector<bool>hash_set;
     MyHashSet() {
-        hash_set.clear();
+        hash_set.resize(1000001, false);
     }
     
     void add(int key) {
