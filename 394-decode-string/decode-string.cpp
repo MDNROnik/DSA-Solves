@@ -1,6 +1,6 @@
 class Solution {
 public:
-    string fun(string &s, int &i, int &n, int &open){
+    string fun(string &s, int &i, int &n){
         if(i==n){
             return "";
         }
@@ -13,9 +13,7 @@ public:
         while(i<n && s[i]>='a' && s[i]<='z'){
             str.push_back(s[i]);i++;
         }
-        cout<<digit<<" "<<str<<endl;
         if(s[i]==']'){
-            cout<<" CLOSED "<<i<<endl;
             if(digit.size()==0){
                 digit="1";
             }
@@ -27,33 +25,24 @@ public:
             while(count--){
                 now+=str;
             }
-            // cout<<now<<endl;
-            open--;
             return now;
         }
         else{
-            cout<<"NOT CLOSED "<<i<<endl;
             int temp = i;
             string previous = "";
             for(;i<n;i++){
                 
                 if(s[i]==']'){
-                    // i--;
-                    cout<<temp<<" close "<<i<<endl;
                     break;
                 }
                 else if(s[i]>='a' && s[i]<='z'){
                     previous+=s[i];
                 }
                 else{
-                    // cout<<" DIP "<<i<<" AND OPEN "<<open<<endl;
-                    previous+=fun(s, i, n, open);
-                    // cout<<"back "<<i<<endl;
-                    // cout<<previous<<endl;
+                    previous+=fun(s, i, n);
                 }
             }
 
-            cout<<temp<<" form to "<<previous<<endl;
             str+=previous;
             if(digit.size()==0){
                 digit="1";
@@ -73,23 +62,21 @@ public:
         int n=s.size(), i=0;
         int m = n;
         string ans ="";
-        while(n-1>=0 && s[n-1]!=']'){n--;}
-        if(n<0){return s;}
-        int open = 0;
+        // while(n-1>=0 && s[n-1]!=']'){n--;}
+        // if(n<0){return s;}
         while(i<n){
-            cout<<"MAIN LOOP "<<i<<endl;
             if(s[i]>='0' && s[i]<='9'){
-                ans+=fun(s, i, n, open);
+                ans+=fun(s, i, n);
             }
             else if(s[i]>='a' && s[i]<='z') {
                 ans+=s[i];
             }
             i++;
         }
-        while(n<m){
-            ans.push_back(s[n]);
-            n++;
-        }
+        // while(n<m){
+        //     ans.push_back(s[n]);
+        //     n++;
+        // }
         return ans;
     }
 };
