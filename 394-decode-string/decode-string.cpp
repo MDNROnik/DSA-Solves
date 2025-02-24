@@ -1,7 +1,6 @@
 class Solution {
 public:
     string fun(string &s, int &i, int &n, int &open){
-        cout<<i<<endl;open++;
         if(i==n){
             return "";
         }
@@ -36,7 +35,7 @@ public:
             cout<<"NOT CLOSED "<<i<<endl;
             int temp = i;
             string previous = "";
-            for(;i<n && open>0;i++){
+            for(;i<n;i++){
                 
                 if(s[i]==']'){
                     // i--;
