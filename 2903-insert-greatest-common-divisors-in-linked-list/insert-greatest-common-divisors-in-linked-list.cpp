@@ -15,19 +15,7 @@ public:
         ListNode* h=head;
         ListNode* h2=head->next;
         while (h->next != NULL){
-            int first = 1;
-            int second = min(h->val, h2->val);
-            int small = min(h->val, h2->val);
-            int big = max(h->val, h2->val);
-            // cout<<small<<"  "<<big<<endl;
-            int now=0;
-            if(big%small==0){
-                now = small;
-            }
-            else{
-                now = gcd(big, small);
-            }
-            // cout<<now<<endl;
+            int now = gcd(h->val, h2->val);;
             ListNode* temp = new ListNode(now);
             h->next=temp;
             temp->next=h2;
