@@ -1,7 +1,7 @@
 class Solution {
 public:
     long long interchangeableRectangles(vector<vector<int>>& rectangles) {
-        map<double, int>mp;
+        unordered_map<double, int>mp;
         long long ans = 0;
         int n = rectangles.size();
         for(int i=0;i<n;i++){
