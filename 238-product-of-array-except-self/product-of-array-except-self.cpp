@@ -3,15 +3,15 @@ public:
     vector<int> productExceptSelf(vector<int>& nums) {
         vector<int>ans;
         int minus=0,count=0;
-        int product=1;
-        for(int i=0;i<nums.size();i++){
+        int product=1, n=nums.size();
+        for(int i=0;i<n;i++){
             if(nums[i]==0){
                 count++;
                 continue;
             }
             product*=nums[i];
         }
-        for(int i=0;i<nums.size();i++){
+        for(int i=0;i<n;i++){
             if(nums[i]==0){
                 if(count==1){
                     ans.push_back(product);
