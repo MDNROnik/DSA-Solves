@@ -10,21 +10,15 @@ public:
                     return false;
                 }
                 if( (i-1>=0 && nums[i-1]<=nums[i+1]) || i==0){
-                    // int temp = nums[i];
-                    // nums[i]=nums[i+1];
-                    bool now = fun(nums, i+1, n, count+1);
-                    if(now==true){
+                    if(fun(nums, i+1, n, count+1)){
                         return true;
                     }
-                    // nums[i]=temp;
                 }
                 nums[i+1]=nums[i];
                 return fun(nums, i+1, n, count+1);
             }
         }
-        else{
-            return true;
-        }
+        return true;
     }
     bool checkPossibility(vector<int>& nums) {
         int n = nums.size();
