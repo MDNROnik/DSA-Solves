@@ -4,14 +4,6 @@ public:
         while(1){
             cout<<senate<<endl;
             int n = senate.size();
-            // if(n==1){
-            //     if(senate[0]=='R'){
-            //         return "Radiant";
-            //     }
-            //     else{
-            //         return "Dire";
-            //     }
-            // }
             string now = "";
             int r=0, d=0, remove = 0;
             for(int i=0;i<n;i++){
@@ -35,17 +27,18 @@ public:
             string remainR="";
             string remainD="";
             int nowR=r, nowD=d;
-            // cout<<r<<" "<<d<<endl;
             while(nowR>0){
                 nowR--;
                 now.pop_back();
-                now.insert(0, "R");
+                remainR.push_back('R');
             }
             while(nowD>0){
                 nowD--;
                 now.pop_back();
-                now.insert(0, "D");
+                remainD.push_back('D');
             }
+            now.insert(0,remainR);
+            now.insert(0,remainD);
             if(r==n){
                 return "Radiant";
             }
