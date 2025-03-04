@@ -27,13 +27,13 @@ bool checkPalindrome(string s)
         fun(s, a, b, indexi+1, indexj, n, ans, index+1);
         a.pop_back();
 
+        //not take
+        fun(s, a, b, indexi, indexj, n, ans, index+1);
+
         //take by 
         b.push_back(s[index]);
         fun(s, a, b, indexi, indexj+1, n, ans, index+1);
         b.pop_back();
-
-        //not take
-        fun(s, a, b, indexi, indexj, n, ans, index+1);
     }
     int maxProduct(string s) {
         string a="", b="";
