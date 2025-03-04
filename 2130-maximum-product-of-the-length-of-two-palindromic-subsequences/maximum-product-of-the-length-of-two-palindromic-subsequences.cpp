@@ -14,30 +14,25 @@ bool checkPalindrome(string s)
     }
     return true;
 }
-    bool fun( string &s, string &a, string &b, int indexi, int indexj, int &n, int &ans, int index){
+    void fun( string &s, string &a, string &b, int indexi, int indexj, int &n, int &ans, int index){
         if(index==n){
-            bool x = checkPalindrome(a);
-            bool y = checkPalindrome(b);
-            if(x==true && y==true){
+            if(checkPalindrome(a) && checkPalindrome(b)){
                 ans = max(ans, (  indexi*indexj  ));
             }
-            return 1;
+            return ;
         }
         //not take
-        bool notTake = fun(s, a, b, indexi, indexj, n, ans, index+1);
+        fun(s, a, b, indexi, indexj, n, ans, index+1);
 
         //take by a
         a.push_back(s[index]);
-        bool takeByA = fun(s, a, b, indexi+1, indexj, n, ans, index+1);
+        fun(s, a, b, indexi+1, indexj, n, ans, index+1);
         a.pop_back();
 
         //take by 
         b.push_back(s[index]);
-        bool takeByB = fun(s, a, b, indexi, indexj+1, n, ans, index+1);
+        fun(s, a, b, indexi, indexj+1, n, ans, index+1);
         b.pop_back();
-
-        return 1;
-
     }
     int maxProduct(string s) {
         string a="", b="";
