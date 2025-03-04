@@ -21,8 +21,6 @@ bool checkPalindrome(string s)
             }
             return ;
         }
-        //not take
-        fun(s, a, b, indexi, indexj, n, ans, index+1);
 
         //take by a
         a.push_back(s[index]);
@@ -33,6 +31,9 @@ bool checkPalindrome(string s)
         b.push_back(s[index]);
         fun(s, a, b, indexi, indexj+1, n, ans, index+1);
         b.pop_back();
+
+        //not take
+        fun(s, a, b, indexi, indexj, n, ans, index+1);
     }
     int maxProduct(string s) {
         string a="", b="";
