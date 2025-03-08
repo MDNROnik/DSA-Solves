@@ -8,7 +8,7 @@ public:
             int ascii = s[i]-97;
             // cout<<i<<" "<<ascii<<" "<<v[ascii];
             if( v[ascii] == 1 ){
-                cout<<" 1 IN"<<endl;
+                // cout<<" 1 IN"<<endl;
                 for(int j=0;j<26;j++){
                     v[j]=0;
                 }
