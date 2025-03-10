@@ -4,10 +4,10 @@ public:
         int ans = 0;
         map<int, int >mp;  
         int n = nums.size();
-        int now = 0, zero=0, one=0;
+        int now = 0;
         for(int i=0;i<n;i++){
-            if(nums[i]==0){now++;zero++;}
-            else{now--;one++;}
+            if(nums[i]==0){now++;}
+            else{now--;}
             if(now==0){
                 ans = max(ans, (i+1));
             }
