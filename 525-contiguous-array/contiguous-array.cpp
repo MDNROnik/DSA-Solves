@@ -5,12 +5,9 @@ public:
         map<int, pair<int,int> >mp;  
         int n = nums.size();
         int now = 0, zero=0, one=0;
-        int first = nums[0];
         for(int i=0;i<n;i++){
-
-            if(nums[i]==first){now++;zero++;}
+            if(nums[i]==0){now++;zero++;}
             else{now--;one++;}
-            // cout<<now<<endl;
             if(now==0){
                 ans = max(ans, (i+1));
             }
