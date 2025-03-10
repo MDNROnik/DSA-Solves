@@ -18,9 +18,7 @@ public:
                 ans = max(ans, (i+1-mp[now]));
             }
         }
-        if(zero==one){
-            ans = max(ans, (zero+one));
-        }
+        
         return ans;
     }
 };
