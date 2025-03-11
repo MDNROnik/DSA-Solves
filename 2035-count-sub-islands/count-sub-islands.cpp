@@ -12,32 +12,32 @@ public:
                     queue<pair<int,int>>q;
                     IN=true;
                     q.push({i, j});
-                    visited2[i][j]=1;
+                    grid2[i][j]=0;
                     if(grid1[i][j]==0 ){makeIsland=false;}
                     while(!q.empty()){
                         int row = q.front().first;
                         int col = q.front().second;
                         q.pop();
 
-                        if(row+1<m && visited2[row+1][col]==0 && grid2[row+1][col]==1){
+                        if(row+1<m && grid2[row+1][col]==1){
                             q.push({row+1, col});
-                            visited2[row+1][col]=1;
+                            grid2[row+1][col]=0;
                             if( grid1[row+1][col]==0 ){makeIsland=false;}
                         }
-                        if(row-1>=0 && visited2[row-1][col]==0 && grid2[row-1][col]==1){
+                        if(row-1>=0 && grid2[row-1][col]==1){
                             q.push({row-1, col});
-                            visited2[row-1][col]=1;
+                            grid2[row-1][col]=0;
                             if( grid1[row-1][col]==0){makeIsland=false;}
                         }
 
-                        if(col+1<n && visited2[row][col+1]==0 && grid2[row][col+1]==1){
+                        if(col+1<n && grid2[row][col+1]==1){
                             q.push({row, col+1});
-                            visited2[row][col+1]=1;
+                            grid2[row][col+1]=0;
                             if( grid1[row][col+1]==0){makeIsland=false;}
                         }
-                        if(col-1>=0 && visited2[row][col-1]==0 && grid2[row][col-1]==1){
+                        if(col-1>=0 && grid2[row][col-1]==1){
                             q.push({row, col-1});
-                            visited2[row][col-1]=1;
+                            grid2[row][col-1]=0;
                             if( grid1[row][col-1]==0){makeIsland=false;}
                         }
                     }
