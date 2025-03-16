@@ -10,8 +10,8 @@ public:
             if(path[k]=='S'){i--;}
             if(path[k]=='E'){j++;}
             if(path[k]=='W'){j--;}
-            cout<<i<<" "<<j<<endl;
-            cout<<mp[{i, j}]<<endl;
+            // cout<<i<<" "<<j<<endl;
+            // cout<<mp[{i, j}]<<endl;
             if(mp[{i,j}]==false){
                 mp[{i,j}]=true;
             }
