@@ -20,10 +20,7 @@ public:
         while(c--){
             ans.push_back(pivot);
         }
-        n=great.size();
-        for(int i=0;i<n;i++){
-            ans.push_back(great[i]);
-        }
+        ans.insert(ans.end(), great.begin(), great.end());
         return ans;
     }
 };
