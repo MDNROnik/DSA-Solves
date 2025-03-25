@@ -9,6 +9,7 @@ public:
             if(visited[edge]==0 && track[edge]==0){
                 bool now = dfs(v, visited, edge, track);
                 if(now==false){
+                    track[edge]=1;
                     setBit=1;break;
                 }
                 else {
