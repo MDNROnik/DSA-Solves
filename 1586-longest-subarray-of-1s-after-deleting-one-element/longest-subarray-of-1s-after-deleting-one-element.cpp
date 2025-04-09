@@ -3,8 +3,8 @@ public:
     int longestSubarray(vector<int>& nums) {
         map<int,pair<int,int>>mp;
         int n=nums.size();
-        int count=0, zero=0;
-        for(int i=0;i<n;i++){
+        int count=0, count2=0, zero=0, j=n-1;
+        for(int i=0;i<n;i++, j--){
             if(nums[i]==0){
                 mp[i].first = count;
                 count=0;
@@ -13,16 +13,13 @@ public:
             else{
                 count++;
             }
-        }
-        count=0;
-        for(int i=n-1;i>=0;i--){
-            if(nums[i]==0){
-                mp[i].second = count;
-                count=0;
-                zero++;
+
+            if(nums[j]==0){
+                mp[j].second = count2;
+                count2=0;
             }
             else{
-                count++;
+                count2++;
             }
         }
         if(zero==0){
@@ -30,7 +27,6 @@ public:
         }
         int ans = 0;
         for(auto a=mp.begin(); a!=mp.end(); a++){
-            // cout<<a->first<<" "<<a->second.first<<" "<<a->second.second<<endl;
             ans = max(ans, ( a->second.first + a->second.second ) );
         }
         
