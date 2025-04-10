@@ -12,7 +12,6 @@ public:
                 count++;
             }
             if(a[j]==c){
-                // cout<<j<<" UB "<<count2<<endl;
                 mp[j].second = count2;
                 count2=0;
                 back.push_back(j);
@@ -33,8 +32,6 @@ public:
                 f++;
             }
         }
-
-
         //for true
         fun(front, back, 'F', n, a, mp);
         int m=front.size();
@@ -44,15 +41,11 @@ public:
         for(int i=0;i<m;i++){
             int now = (i+k-1);
             if( now < m){
-                // cout<<front[i]<<" "<<front[now]<<endl;
-                // cout<<mp[front[i]].first<<" "<<mp[front[now]].second<<endl;
                 int first = mp[front[i]].first;
                 int second = mp[front[now] ].second;
                 int thrid = first+second+(front[now]-front[i]+1);
                 ans = max(ans, thrid);
             }
-            // cout<<front[i]<<endl;
-            // cout<<mp[front[i]].first<<" "<<mp[front[i]].second<<endl;
         }
 
         //for false
@@ -67,18 +60,12 @@ public:
         for(int i=0;i<m;i++){
             int now = (i+k-1);
             if( now < m){
-                // cout<<front[i]<<" "<<front[now]<<endl;
-                // cout<<mp[front[i]].first<<" "<<mp[front[now]].second<<endl;
                 int first = mp[front[i]].first;
                 int second = mp[front[now] ].second;
                 int thrid = first+second+(front[now]-front[i]+1);
                 ans = max(ans, thrid);
             }
-            // cout<<front[i]<<endl;
-            // cout<<mp[front[i]].first<<" "<<mp[front[i]].second<<endl;
         }
-
-        
         return ans;
     }
 };
