@@ -21,7 +21,7 @@ public:
                     now=next;
                 }
             }
-            cout<<now<<endl;
+            // cout<<now<<endl;
         }
         return ans;
     }
