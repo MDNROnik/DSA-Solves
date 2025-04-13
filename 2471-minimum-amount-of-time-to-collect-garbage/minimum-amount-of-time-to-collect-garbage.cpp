@@ -35,7 +35,7 @@ public:
                 }
             }
         }
-        cout<<ansp<<" "<<ansg<<" "<<ansm<<endl;
+        // cout<<ansp<<" "<<ansg<<" "<<ansm<<endl;
         int ans=ansp+ansg+ansm;
         return ans;
     }
