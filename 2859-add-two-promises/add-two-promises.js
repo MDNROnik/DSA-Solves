@@ -8,7 +8,7 @@ var addTwoPromises = async function(promise1, promise2) {
     try{
         let value = await promise1;
         res+=value
-        console.log(value);
+        // console.log(value);
     }catch(error){
 
     }
@@ -16,7 +16,7 @@ var addTwoPromises = async function(promise1, promise2) {
     try{
         let value = await promise2;
         res+=value
-        console.log(value);
+        // console.log(value);
     }catch(error){
 
     }
