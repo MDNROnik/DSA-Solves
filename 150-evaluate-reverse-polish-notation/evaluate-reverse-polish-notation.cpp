@@ -1,49 +1,58 @@
 class Solution {
 public:
     int evalRPN(vector<string>& tokens) {
-        stack<long long>st;
-        // stringstream geek;
-        // geek << s;
-        // int x = 0;
-        // geek >> x;
-        long long ans=0;
-        long long n=tokens.size();
+        stack<int>st;
+        int n = tokens.size();
+        int now = 0;
         for(int i=0;i<n;i++){
-
-            if(tokens[i] =="+"){
-                long long second = st.top();st.pop();
-                long long first = st.top();st.pop();
-                long long ans =first+second;
-                st.push(ans);
+            int first = 0, second = 0;
+            if(tokens[i] == "+"){
+                if(st.size()>1){
+                    first = st.top();st.pop();
+                    second = st.top();st.pop();
+                }
+                first+=second;
+                st.push(first);
             }
-            else if(tokens[i]=="-"){
-                long long second = st.top();st.pop();
-                long long first = st.top();st.pop();
-                long long ans =first-second;
-                st.push(ans);
+            else if(tokens[i] == "-"){
+                if(st.size()>1){
+                    second = st.top();st.pop();
+                    first = st.top();st.pop();
+                }
+                
+                first-=second;
+                st.push(first);
             }
-            else if(tokens[i]=="/"){
-                long long second = st.top();st.pop();
-                long long first = st.top();st.pop();
-                long long ans =first/second;
-                st.push(ans);
+            else if(tokens[i] == "*"){
+                if(st.size()>1){
+                    first = st.top();st.pop();
+                    second = st.top();st.pop();
+                }
+                if(second==0){
+                    st.push(second);
+                    continue;
+                }
+                first*=second;
+                st.push(first);
             }
-            else if(tokens[i]=="*"){
-                long long second = st.top();st.pop();
-                long long first = st.top();st.pop();
-                long long ans =first*second;
-                st.push(ans);
+            else if(tokens[i] == "/"){
+                if(st.size()>1){
+                    second = st.top();st.pop();
+                    first = st.top();st.pop();
+                }
+                
+                if(second==0){
+                    st.push(second);
+                    continue;
+                }
+                first/=second;
+                st.push(first);
             }
             else{
-                //cout<<tokens[i]<<endl;
-                stringstream geek;
-                geek << tokens[i];
-                long long x = 0;
-                geek >> x;
-                st.push(x);
+                int num = std::stoi(tokens[i]);
+                st.push(num);
             }
         }
-        ans=st.top();
-        return ans;   
+        return st.top();
     }
 };
