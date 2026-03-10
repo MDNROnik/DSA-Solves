@@ -1,15 +1,14 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        int n = nums.size();
-        int ans = 0;
-        int maxi = 0;
-        map<int,int>v;
+        map<int,int>mp;
+        int n=nums.size();
+        int ans, count=0;
         for(int i=0;i<n;i++){
-            v[nums[i]]++;
-            if(v[nums[i]]>maxi){
-                maxi = v[nums[i]];
-                ans = nums[i];
+            mp[nums[i]]++;
+            if(count<mp[nums[i]]){
+                count = max(count, mp[nums[i]]);
+                ans=nums[i];
             }
         }
         return ans;
