@@ -1,24 +1,24 @@
-
 class MyHashSet {
 public:
-vector<bool>hash_set;
+    vector<int> v;
+
     MyHashSet() {
-        hash_set.resize(1000001, false);
+        v = vector<int>(1000010, 0);
     }
     
     void add(int key) {
-        hash_set[key] = true;
+        v[key]=1;
+        return;
     }
     
     void remove(int key) {
-        hash_set[key] = false;
+        v[key]=0;
+        return;
     }
     
     bool contains(int key) {
-        if(hash_set[key]){
-            return true;
-        }
-        return false;
+        cout<<v[key]<<endl;
+        return v[key];
     }
 };
 
